@@ -20,6 +20,8 @@ metadata:
   labels:
     app: words-db
 spec:
+  nodeSelector:
+    region: west
   selector:
     matchLabels:
       app: words-db
