@@ -31,3 +31,8 @@ spec:
         command: ["python", "app.py", "--ml-endpoint=http://max-image-caption-generator:5000"]
         ports:
         - containerPort: 8088
+        resources:
+          limits:
+            cpu: "2m"
+          requests:
+            cpu: "2m"

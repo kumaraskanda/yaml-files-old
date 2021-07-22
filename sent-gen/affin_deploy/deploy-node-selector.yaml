@@ -66,6 +66,8 @@ spec:
       labels:
         app: words-api
     spec:
+      nodeSelector:
+        region: east
       containers:
       - name: words
         image: dockersamples/k8s-wordsmith-api

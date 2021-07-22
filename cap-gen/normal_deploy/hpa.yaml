@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: max-object-detector
+  name: caption-generator
 spec:
-  maxReplicas: 5
+  maxReplicas: 3
   minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: words
+    name: max-image-caption-generator-web-app
   targetCPUUtilizationPercentage: 20
