@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: max-object-detector
+  name: object-detector
 spec:
   selector:
-    app: max-object-detector
+    app: object-detector
   ports:
   - port: 5000
     targetPort: 5000
@@ -12,21 +12,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: max-object-detector
+  name: object-detector
   labels:
-    app: max-object-detector
+    app: object-detector
 spec:
   selector:
     matchLabels:
-      app: max-object-detector
+      app: object-detector
   replicas: 2
   template:
     metadata:
       labels:
-        app: max-object-detector
+        app: object-detector
     spec:
       containers:
-      - name: max-object-detector
+      - name: object-detector
         image: quay.io/codait/max-object-detector:latest
         ports:
         - containerPort: 5000
@@ -39,20 +39,4 @@ spec:
            memory: "100Mi"
                  
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: basic-kubernetes
-spec:
-  rules:
-  - host: 34.132.82.249.nip.io
-    http:
-      paths:
-      - path: /
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: max-object-detector
-            port:
-              number: 80
 
